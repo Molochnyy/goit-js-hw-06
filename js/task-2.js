@@ -1,12 +1,12 @@
 'use strict';
 
 class Storage {
-    constructor(item) {
-        this.item = [];
+    constructor(items) {
+        this.items = items;
     }
 
     getItems() {
-        return this.item;
+        return this.items;
     }
 
     addItem(newItem) {
@@ -14,9 +14,11 @@ class Storage {
     }
 
     removeItem(itemToRemove) {
-        return this.items.filter(item => item !== itemToRemove);
+        let index = this.items.indexOf(itemToRemove);
+        if (index > -1) {
+            return this.items.splice(index, 1);
+        }
     }
-
 }
 
 const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
